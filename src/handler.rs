@@ -12,7 +12,7 @@ pub fn handle_stream(mut stream: TcpStream, store: Arc<Mutex<Datastore>>) {
             Err(_) => break,
         };
 
-        let response = store.lock().unwrap().perform_action(&action);
+        let response = store.lock().unwrap().perform_action(action);
         TcpConn::write_to_client(&mut stream, response);
     }
 }
